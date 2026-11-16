@@ -1,0 +1,26 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Large / third-party data (keep download scripts, not the data)
+data/raw/cubicasa5k/
+*.zip
+
+# RL training artefacts (commit only small, final checkpoints deliberately)
+runs/
+tb_logs/
+*.ckpt
+
+# OS / editor
+.DS_Store
+.vscode/
+*.bkp
+*.drawio.bkp
