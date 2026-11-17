@@ -1,0 +1,106 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Week 3 V1 Data Pipeline" id="week3-pipeline-v1">
+    <mxGraphModel dx="1550" dy="860" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1550" pageHeight="860" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="&lt;b&gt;Week 3 — V1 Data Pipeline: EventLayout-RL&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=26;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Expands the data input of the V1 architecture (the images that feed the Floor-Plan Reader). Practice data now; colour-coded floor plans later." style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#5b6475;" vertex="1" parent="1">
+          <mxGeometry x="20" y="62" width="1400" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="source" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;SOURCE&lt;/font&gt;&lt;/b&gt;&lt;br&gt;6 practice images (PNG)&lt;br&gt;+ labels.csv&lt;br&gt;(dummy pack 03_images)&lt;br&gt;Later: colour-coded&lt;br&gt;floor plans + answer maps&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Serves: FR1, NFR2&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#82b366;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="150" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ingest" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;INGEST&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Select the exact folder&lt;br&gt;(not 'first file found')&lt;br&gt;List PNG / JPG files&lt;br&gt;SHA-256 of each source" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#6fa8dc;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="280" y="150" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="inspect" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;INSPECT&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Open + verify each image&lt;br&gt;Record size, mode, colours&lt;br&gt;Check every image has&lt;br&gt;exactly one label" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#6fa8dc;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="540" y="150" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="prepare" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;PREPARE / TRANSFORM&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Convert to RGB&lt;br&gt;Keep original size&lt;br&gt;(no resize)&lt;br&gt;Save as PNG (lossless)&lt;br&gt;Attach label by filename" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#6fa8dc;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="800" y="150" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="validate" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;VALIDATE OUTPUT&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Output exists, not empty&lt;br&gt;Same count as input (6/6)&lt;br&gt;Pixel-identical to source&lt;br&gt;Only original colours" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ece2f5;strokeColor=#a27fc9;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="150" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="lineage" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;RECORD LINEAGE&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Manifest: source -&gt; output,&lt;br&gt;SHA-256, settings, time&lt;br&gt;Rerun gives the same&lt;br&gt;result (Cell 9: PASS)&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Serves: RAI2&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ece2f5;strokeColor=#a27fc9;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="150" width="210" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="fail1" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Failure point 1 — unreadable input&lt;/font&gt;&lt;/b&gt;&lt;br&gt;A file is missing, corrupt or not an image.&lt;br&gt;Response: stop and report the file name;&lt;br&gt;nothing is prepared from it." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4dc;strokeColor=#e3a33b;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+          <mxGeometry x="280" y="420" width="470" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="fail2" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Failure point 2 — colours changed&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Resizing or JPEG blends red + white into pink,&lt;br&gt;so the reader would mark the wrong squares.&lt;br&gt;Response: no resize, PNG only, pixel check." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4dc;strokeColor=#e3a33b;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+          <mxGeometry x="800" y="420" width="470" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="store" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;PREPARED DATA&lt;/font&gt;&lt;/b&gt;&lt;br&gt;data/processed/images/&lt;br&gt;image_manifest.csv&lt;br&gt;week3_manifest.json&lt;br&gt;data/pipeline_v1/images/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#82b366;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="410" width="210" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="next" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Floor-Plan Reader&lt;/font&gt;&lt;/b&gt;&lt;br&gt;(Week 2 V1 architecture)&lt;br&gt;Next: turns each image&lt;br&gt;into a grid map&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Serves: FR1&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#9e9e9e;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="630" width="210" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="decision" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Key decision from Part B (same 6 images)&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Setting A — RGB + resize 224×224: up to 231 colours per image, 0.75–2.02% mixed pixels, width/height ratio changed in 5 of 6.&lt;br&gt;Setting B — RGB, original size (CHOSEN): 2 colours, 0% mixed pixels, ratio kept, 6/6 pixel-identical to the source." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#9aa5b8;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="610" width="1250" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="source" target="ingest">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="ingest" target="inspect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="inspect" target="prepare">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="prepare" target="validate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="validate" target="lineage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="can fail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.776595744680851;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;dashed=1;" edge="1" parent="1" source="inspect" target="fail1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="can fail" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.22340425531914893;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;dashed=1;" edge="1" parent="1" source="prepare" target="fail2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="saved" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="lineage" target="store">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="used by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;dashed=1;" edge="1" parent="1" source="store" target="next">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw0" value="" style="rounded=1;html=1;fillColor=#e2f0d9;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="20" y="792" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx0" value="Data source / stored data" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="58" y="788" width="195" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw1" value="" style="rounded=1;html=1;fillColor=#dbeafe;strokeColor=#6fa8dc;" vertex="1" parent="1">
+          <mxGeometry x="270.5" y="792" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx1" value="Pipeline stage" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="308.5" y="788" width="118" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw2" value="" style="rounded=1;html=1;fillColor=#ece2f5;strokeColor=#a27fc9;" vertex="1" parent="1">
+          <mxGeometry x="445.1" y="792" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx2" value="Check and lineage" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="483.1" y="788" width="139" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw3" value="" style="rounded=1;html=1;fillColor=#fff4dc;strokeColor=#e3a33b;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="640.4000000000001" y="792" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx3" value="Failure point (dashed)" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="678.4000000000001" y="788" width="174" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw4" value="" style="rounded=1;html=1;fillColor=#f5f5f5;strokeColor=#9e9e9e;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="870.2" y="792" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx4" value="Next component (dashed)" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="908.2" y="788" width="181" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

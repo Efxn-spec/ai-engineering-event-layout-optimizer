@@ -46,3 +46,4 @@ Event organizers (e.g., university faculty and student society event committees)
 |------|-------|-------------|--------|
 | W1 | System map + project scope | README + [docs](docs/week1_project_scope.md) | ✅ |
 | W2 | Requirements + evaluation criteria + V1 architecture | [Requirements](docs/week2_requirements.md) · [Evaluation](docs/week2_evaluation_criteria.md) · [Architecture](docs/week2_architecture_decisions.md) | ✅ |
+| W3 | V1 data pipeline (image pathway, practice data) | [Notebook](notebooks/week3_pipeline.ipynb) · [Data inventory](docs/week3_data_inventory.md) · [Pipeline decisions](docs/week3_pipeline_decisions.md) · [Prepared data](data/) | ✅ |
