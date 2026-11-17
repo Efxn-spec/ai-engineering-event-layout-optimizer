@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Week 2 V1 Architecture" id="week2-architecture-v1">
+    <mxGraphModel dx="1540" dy="990" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1540" pageHeight="990" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="&lt;b&gt;V1 — Architecture: EventLayout-RL&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=26;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Conceptual design: each box is named by what it does, not by technology. Grey text shows the requirements each box supports." style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#5b6475;" vertex="1" parent="1">
+          <mxGeometry x="20" y="62" width="1400" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="org" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Event Organizer&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Uploads the floor-plan image&lt;br&gt;and number of attendees;&lt;br&gt;reads the result" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dbeafe;strokeColor=#6fa8dc;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="400" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="app" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Event Layout Application&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Upload, map check and&lt;br&gt;results screens; passes&lt;br&gt;data between components&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: FR2, FR5&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fde4ec;strokeColor=#e07a9a;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="335" y="400" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="agent" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Layout Planning Agent&lt;/font&gt;&lt;/b&gt;&lt;br&gt;(reinforcement learning)&lt;br&gt;Places the stage, seating&lt;br&gt;blocks, registration and&lt;br&gt;AV tables&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: FR3, NFR3, NFR4&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#82b366;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="400" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="checker" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Safety &amp; Rule Checker&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Checks exit paths, aisles,&lt;br&gt;compactness, stage view&lt;br&gt;and practicality&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: FR4, RAI1&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ece2f5;strokeColor=#a27fc9;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="965" y="400" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="output" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Layout &amp; Reasons Display&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Layout + reason for each&lt;br&gt;check, marked as an advisory&lt;br&gt;draft (or 'no safe layout&lt;br&gt;found')&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: FR5, RAI3&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ece2f5;strokeColor=#a27fc9;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="400" width="240" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="reader" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Floor-Plan Reader&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Turns the image into a grid&lt;br&gt;map: walls, pillars, exits,&lt;br&gt;power points&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: FR1, NFR2&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#82b366;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="335" y="120" width="240" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="training" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Synthetic Training Rooms&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Many self-made rooms where&lt;br&gt;the agent practises&lt;br&gt;before it is used&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: NFR3&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#82b366;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="120" width="240" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Safety &amp; Layout Rules&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Exit and aisle rules from&lt;br&gt;fire-safety guidance;&lt;br&gt;layout goals&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: FR4, RAI1&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e2f0d9;strokeColor=#82b366;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;" vertex="1" parent="1">
+          <mxGeometry x="965" y="120" width="240" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="mapcheck" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Map Check &amp; Correction&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Organizer fixes reading&lt;br&gt;mistakes; planning starts&lt;br&gt;only after confirming&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: FR2, RAI2&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4dc;strokeColor=#e3a33b;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+          <mxGeometry x="335" y="690" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="monitor" value="&lt;b&gt;&lt;font style='font-size:15px'&gt;Monitoring &amp; Evaluation&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Records time, validity, safety and quality scores on test rooms.&lt;br&gt;Compares the results with a simple rule-based method on the same rooms.&lt;br&gt;&lt;i&gt;&lt;font color='#5b6475' style='font-size:11px'&gt;Supports: NFR1, NFR4, O3&lt;/font&gt;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff4dc;strokeColor=#e3a33b;strokeWidth=2;fontSize=13;fontColor=#1a2b4c;arcSize=8;dashed=1;dashPattern=8 4;" vertex="1" parent="1">
+          <mxGeometry x="900" y="690" width="620" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" value="Image +&lt;br&gt;attendees" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="org" target="app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="Floor-plan&lt;br&gt;image" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="app" target="reader">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="Grid map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="reader" target="app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Detected&lt;br&gt;map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;dashed=1;" edge="1" parent="1" source="app" target="mapcheck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="Confirmed&lt;br&gt;map" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;dashed=1;" edge="1" parent="1" source="mapcheck" target="app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="Confirmed&lt;br&gt;map +&lt;br&gt;attendees" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="app" target="agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="Practised&lt;br&gt;before use" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="training" target="agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="Proposed&lt;br&gt;layout" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="agent" target="checker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Failed:&lt;br&gt;try again" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="checker" target="agent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="Rules" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="rules" target="checker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="Passed&lt;br&gt;layout +&lt;br&gt;results" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="checker" target="output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="Check results" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.29838709677419356;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;dashed=1;" edge="1" parent="1" source="checker" target="monitor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="Final layouts&lt;br&gt;+ timing" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#1a2b4c;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.8064516129032258;entryY=0;entryDx=0;entryDy=0;fontSize=12;fontColor=#1a2b4c;labelBackgroundColor=#ffffff;dashed=1;" edge="1" parent="1" source="output" target="monitor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw0" value="" style="rounded=1;html=1;fillColor=#dbeafe;strokeColor=#6fa8dc;" vertex="1" parent="1">
+          <mxGeometry x="20" y="887" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx0" value="User" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="58" y="883" width="48" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw1" value="" style="rounded=1;html=1;fillColor=#fde4ec;strokeColor=#e07a9a;" vertex="1" parent="1">
+          <mxGeometry x="125.6" y="887" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx1" value="Application" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="163.6" y="883" width="97" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw2" value="" style="rounded=1;html=1;fillColor=#e2f0d9;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="279.5" y="887" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx2" value="AI capability / knowledge source" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="317.5" y="883" width="244" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw3" value="" style="rounded=1;html=1;fillColor=#ece2f5;strokeColor=#a27fc9;" vertex="1" parent="1">
+          <mxGeometry x="578.3" y="887" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx3" value="Checking and output" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="616.3" y="883" width="153" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_sw4" value="" style="rounded=1;html=1;fillColor=#fff4dc;strokeColor=#e3a33b;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="787.4" y="887" width="30" height="16" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_tx4" value="Human control and evaluation" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#1a2b4c;" vertex="1" parent="1">
+          <mxGeometry x="825.4" y="883" width="216" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_arrows" value="Solid arrow = main flow     Dashed box or arrow = human control / evaluation" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#5b6475;" vertex="1" parent="1">
+          <mxGeometry x="20" y="917" width="520" height="24" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

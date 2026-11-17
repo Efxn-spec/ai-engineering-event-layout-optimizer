@@ -45,3 +45,4 @@ Event organizers (e.g., university faculty and student society event committees)
 | Week | Focus | Deliverable | Status |
 |------|-------|-------------|--------|
 | W1 | System map + project scope | README + [docs](docs/week1_project_scope.md) | ✅ |
+| W2 | Requirements + evaluation criteria + V1 architecture | [Requirements](docs/week2_requirements.md) · [Evaluation](docs/week2_evaluation_criteria.md) · [Architecture](docs/week2_architecture_decisions.md) | ✅ |
